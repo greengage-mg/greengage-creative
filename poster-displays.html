@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poster Displays | Greengage Creative</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="top-bar">
+        <div class="logo">Greengage Creative</div>
+
+        <input type="text" id="searchBar" placeholder="Search products...">
+
+        <nav>
+            <ul class="menu">
+                <li class="mega-parent">Products
+                    <div class="mega-menu">
+                        <a href="poster-displays.html">Poster Displays</a>
+                        <a href="notice-boards.html">Notice Boards</a>
+                        <a href="floor-displays.html">Floor Displays</a>
+                        <a href="printed-posters.html">Printed Posters & Banners</a>
+                        <a href="design-services.html">Design Services</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="category-header">
+    <h1>Poster Displays</h1>
+
+    <select id="sort">
+        <option value="default">Sort By</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+    </select>
+</section>
+
+<section class="products" id="product-list">
+
+    <div class="product" data-price="49.99">
+        <h3>A1 Snap Frame</h3>
+        <p>£49.99</p>
+        <button onclick="buyNow('A1 Snap Frame', 4999)">Buy Now</button>
+    </div>
+
+    <div class="product" data-price="89.99">
+        <h3>LED Light Box</h3>
+        <p>£89.99</p>
+        <button onclick="buyNow('LED Light Box', 8999)">Buy Now</button>
+    </div>
+
+    <div class="product" data-price="129.99">
+        <h3>Outdoor Lockable Poster Case</h3>
+        <p>£129.99</p>
+        <button onclick="buyNow('Outdoor Poster Case', 12999)">Buy Now</button>
+    </div>
+
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h4>Greengage Creative</h4>
+            <p>UK Mainland Delivery Only</p>
+            <p>Email: info@greengagecreative.co.uk</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="poster-displays.html">Poster Displays</a>
+            <a href="notice-boards.html">Notice Boards</a>
+            <a href="floor-displays.html">Floor Displays</a>
+        </div>
+
+        <div>
+            <h4>Legal</h4>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+
+document.getElementById("sort").addEventListener("change", function() {
+    let products = document.querySelectorAll(".product");
+    let container = document.getElementById("product-list");
+    let sorted = Array.from(products);
+
+    if (this.value === "low") {
+        sorted.sort((a,b) => a.dataset.price - b.dataset.price);
+    }
+
+    if (this.value === "high") {
+        sorted.sort((a,b) => b.dataset.price - a.dataset.price);
+    }
+
+    sorted.forEach(el => container.appendChild(el));
+});
+
+function buyNow(name, price) {
+    alert("Stripe checkout will connect here next step.");
+}
+
+</script>
+
+</body>
+</html>
